@@ -7,7 +7,11 @@ machine:
 dependencies:
     override:
         - sudo pip install -U docker-compose
+stages:
+    - test
+test: 
+    tags: 
+    - docker
+    run: 
+    - docker-compose up -d
 
-test:
-    override:
-        - docker-compose up
