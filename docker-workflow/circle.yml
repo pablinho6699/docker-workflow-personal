@@ -4,14 +4,7 @@ machine:
     services:
         - docker
 
-dependencies:
+test:
     override:
-        - sudo pip install -U docker-compose
-stages:
-    - test
-test: 
-    tags: 
-    - docker
-    run: 
-    - docker-compose up -d
-
+        - docker-compose run -d --no-deps node1
+        - cd node1; mocha
